@@ -17,7 +17,7 @@ const AdminPanel = () => {
   });
 
   const fetchPlaces = async () => {
-    const res = await axios.get('http://127.0.0.1:8000/api/travel/places/');
+    const res = await axios.get('http://travelcompanion-backend-lb-1994745567.eu-west-1.elb.amazonaws.com/api/travel/places/');
     setPlaces(res.data);
   };
 
@@ -37,9 +37,9 @@ const AdminPanel = () => {
   const handleSubmit = async () => {
     try {
       if (editingId) {
-        await axios.put(`http://127.0.0.1:8000/api/travel/places/${editingId}/`, form);
+        await axios.put(`http://travelcompanion-backend-lb-1994745567.eu-west-1.elb.amazonaws.com/api/travel/places/${editingId}/`, form);
       } else {
-        await axios.post(`http://127.0.0.1:8000/api/travel/places/`, form);
+        await axios.post(`http://travelcompanion-backend-lb-1994745567.eu-west-1.elb.amazonaws.com/api/travel/places/`, form);
       }
       fetchPlaces();
       setForm({
@@ -58,24 +58,10 @@ const AdminPanel = () => {
       console.error("Error saving place:", err);
     }
   };
-//   const handleCreate = async () => {
-//     await axios.post('http://127.0.0.1:8000/api/travel/places/', form);
-//     fetchPlaces();
-//     setForm({
-//       name: '',
-//       country: '',
-//       description: '',
-//       best_time_to_visit: '',
-//       rating: '',
-//       things_to_do: '',
-//       local_food: '',
-//       must_visit_places: '',
-//       recommended_hotels: [{ name: '', price: '' }],
-//     });
-//   };
+
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://127.0.0.1:8000/api/travel/places/${id}/`);
+    await axios.delete(`http://travelcompanion-backend-lb-1994745567.eu-west-1.elb.amazonaws.com/api/travel/places/${id}/`);
     fetchPlaces();
   };
 

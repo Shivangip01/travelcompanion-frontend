@@ -12,7 +12,7 @@ function App({ isAdmin }) {
 
   const handleSearch = async (origin, destination) => {
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/transport/routes/`, {
+      const res = await axios.get(`http://travelcompanion-backend-lb-1994745567.eu-west-1.elb.amazonaws.com/api/transport/routes/`, {
         params: {
           from: origin,
           to: destination,
